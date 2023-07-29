@@ -110,7 +110,7 @@ const Detail = () => {
                   .map((currentNote) => {
                     return (
                       <div
-                        key={currentNote._id}
+                        key={currentNote.noteId}
                         className="flex justify-between items-center p-4 rounded-lg bg-stone-200"
                       >
                         <p>{currentNote.text}</p>
@@ -121,19 +121,23 @@ const Detail = () => {
                             closeModal={noteEditClose}
                             modalBtnVariant={
                               <IconActionBtn handleClick={noteEditOpen}>
-                                <Edit isEdit />
+                                <Edit />
                               </IconActionBtn>
                             }
                           >
                             <div className="p-4">
-                              <NoteForm />
+                              <NoteForm
+                                closeModal={noteEditClose}
+                                editText={currentNote.text}
+                                noteCode={currentNote.noteId}
+                              />
                             </div>
                           </ModalProvider>
                           <IconActionBtn
                             handleClick={() => {
                               dispatch({
                                 type: "REMOVE_NOTE",
-                                payload: currentNote._id,
+                                payload: currentNote.noteId,
                               });
                             }}
                           >

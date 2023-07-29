@@ -46,7 +46,11 @@ const DataReducer = (state, action) => {
         ...state,
         noteList: [
           ...state.noteList,
-          { _id: action.payload._id, text: action.payload.text },
+          {
+            _id: action.payload._id,
+            text: action.payload.text,
+            noteId: uuid(),
+          },
         ],
       };
     }
@@ -55,7 +59,18 @@ const DataReducer = (state, action) => {
       return {
         ...state,
         noteList: state.noteList.filter((currentNote) => {
-          return currentNote._id !== action.payload;
+          return currentNote.noteId !== action.payload;
+        }),
+      };
+    }
+
+    case "EDIT_NOTE": {
+      return {
+        ...state,
+        noteList: state.noteList.map((currentNote) => {
+          return currentNote.noteId === action.payload._id
+            ? { ...currentNote, text: action.payload.text }
+            : currentNote;
         }),
       };
     }
