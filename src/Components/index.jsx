@@ -16,6 +16,7 @@ import Sidebar from "./Sidebar";
 import PlaylistCard from "./PlaylistCard";
 import MoreCard from "./MoreCard";
 import NoteForm from "./NoteForm";
+import PlaylistForm from "./PlaylistForm";
 export {
   Card,
   ModalProvider,
@@ -33,4 +34,5 @@ export {
   PlaylistCard,
   MoreCard,
   NoteForm,
+  PlaylistForm,
 };

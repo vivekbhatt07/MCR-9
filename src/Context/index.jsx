@@ -12,6 +12,7 @@ const InitialState = {
   videoList: [...videos],
   playList: [],
   noteList: [],
+  watchList: [],
 };
 
 const DataReducer = (state, action) => {
@@ -71,6 +72,22 @@ const DataReducer = (state, action) => {
           return currentNote.noteId === action.payload._id
             ? { ...currentNote, text: action.payload.text }
             : currentNote;
+        }),
+      };
+    }
+
+    case "ADD_TO_WATCH": {
+      return {
+        ...state,
+        watchList: [...state.watchList, { watchId: uuid(), ...action.payload }],
+      };
+    }
+
+    case "REMOVE_FROM_WATCH": {
+      return {
+        ...state,
+        watchList: state.watchList.filter((current) => {
+          return current.watchId == action.payload;
         }),
       };
     }

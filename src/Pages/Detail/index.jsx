@@ -4,6 +4,7 @@ import {
   ModalProvider,
   MoreCard,
   NoteForm,
+  PlaylistForm,
   Sidebar,
 } from "../../Components";
 
@@ -38,6 +39,11 @@ const Detail = () => {
   const getVideoDetail = state.videoList.find((currentVideo) => {
     return currentVideo._id == videoId;
   });
+
+  const isWatch = state.watchList.findIndex((current) => {
+    return current._id == getVideoDetail._id;
+  });
+
   return (
     <div className="bg-stone-50">
       <div className="flex min-h-screen gap-2">
@@ -71,9 +77,31 @@ const Detail = () => {
                 <span>{getVideoDetail.title}</span>
               </div>
               <div className="flex gap-2">
-                <IconActionBtn>
-                  <WatchLaterOutlined />
-                </IconActionBtn>
+                {isWatch !== -1 ? (
+                  <IconActionBtn
+                    handleClick={() => {
+                      dispatch({
+                        type: "REMOVE_FROM_WATCH",
+                        payload: getVideoDetail.watchId,
+                      });
+                    }}
+                  >
+                    <WatchLater />
+                  </IconActionBtn>
+                ) : (
+                  <IconActionBtn
+                    handleClick={() => {
+                      dispatch({
+                        type: "ADD_TO_WATCH",
+                        payload: getVideoDetail,
+                      });
+                    }}
+                  >
+                    <WatchLaterOutlined />
+                  </IconActionBtn>
+                )}
+
+                <PlaylistForm />
                 <IconActionBtn>
                   <PlaylistAdd />
                 </IconActionBtn>
