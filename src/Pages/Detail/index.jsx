@@ -101,10 +101,10 @@ const Detail = () => {
                   </IconActionBtn>
                 )}
 
-                <PlaylistForm />
-                <IconActionBtn>
+                <PlaylistForm isDetail cardData={getVideoDetail} />
+                {/* <IconActionBtn>
                   <PlaylistAdd />
-                </IconActionBtn>
+                </IconActionBtn> */}
                 <ModalProvider
                   modalTitle={"Add Note"}
                   isOpen={isNoteOpen}

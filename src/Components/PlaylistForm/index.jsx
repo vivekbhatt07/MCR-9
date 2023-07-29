@@ -23,7 +23,7 @@ import {
 } from "@mui/icons-material";
 import { useData } from "../../Context";
 
-const PlaylistForm = () => {
+const PlaylistForm = (props) => {
   const { state, dispatch } = useData();
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [playlistData, setPlaylistData] = useState({
@@ -43,6 +43,9 @@ const PlaylistForm = () => {
 
   const handlePlaylistSubmit = (event) => {
     event.preventDefault();
+    if (props.isDetail) {
+      dispatch({ type: "ADD_PLAYLIST_ITEM", payload: props.cardData });
+    }
     dispatch({ type: "ADD_PLAYLIST", payload: playlistData });
     closePlaylistModal();
   };
@@ -79,8 +82,16 @@ const PlaylistForm = () => {
             />
           </TextInputLabel>
         </div>
-        <div>
-          <ContainedActionBtn>Create New Playlist</ContainedActionBtn>
+        <div className="flex gap-2 justify-between">
+          {!props.isDetail && (
+            <ContainedActionBtn>Create New Playlist</ContainedActionBtn>
+          )}
+          {props.isDetail && (
+            <ContainedActionBtn>Add Video to new playlist</ContainedActionBtn>
+          )}
+          {props.isDetail && (
+            <ContainedActionBtn>Add to Existing</ContainedActionBtn>
+          )}
         </div>
       </form>
     </ModalProvider>

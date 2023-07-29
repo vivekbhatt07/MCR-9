@@ -23,7 +23,7 @@ const DataReducer = (state, action) => {
         playList: [
           ...state.playList,
           {
-            _id: uuid(),
+            playListId: uuid(),
             thumbnail:
               "https://res.cloudinary.com/duqsyuriy/image/upload/v1688955652/vivekKBg_ykmcva.jpg",
             title: action.payload.playlistTitle,
@@ -88,6 +88,15 @@ const DataReducer = (state, action) => {
         ...state,
         watchList: state.watchList.filter((current) => {
           return current.watchId == action.payload;
+        }),
+      };
+    }
+
+    case "ADD_PLAYLIST_ITEM": {
+      return {
+        ...state,
+        playList: state.playList.map((currentPlaylist) => {
+          return;
         }),
       };
     }
