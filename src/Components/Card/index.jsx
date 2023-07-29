@@ -22,7 +22,7 @@ const Card = (props) => {
     chips,
     creator,
   } = props;
-
+  console.log(props);
   const isWatch = state.watchList.findIndex((current) => {
     return current._id == props._id;
   });
@@ -30,6 +30,7 @@ const Card = (props) => {
   const watchItem = state.watchList.find((current) => {
     return current._id == props._id;
   });
+  console.log(watchItem);
   return (
     <Link to={isCategory ? `/category/${simpleStr(category)}` : `/${_id}`}>
       <div className="flex flex-col min-w-[300px] max-w-[300px] border border-stone-400 rounded-lg items-stretch overflow-hidden">
@@ -52,7 +53,7 @@ const Card = (props) => {
                 e.stopPropagation();
                 dispatch({
                   type: "REMOVE_FROM_WATCH",
-                  payload: watchItem.watchId,
+                  payload: props._id,
                 });
               }}
             >

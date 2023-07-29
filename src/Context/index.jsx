@@ -87,7 +87,7 @@ const DataReducer = (state, action) => {
       return {
         ...state,
         watchList: state.watchList.filter((current) => {
-          return current.watchId == action.payload;
+          return current._id !== action.payload;
         }),
       };
     }
