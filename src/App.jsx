@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Landing, Detail } from "./Pages";
+import { Landing, Detail, Explore, Playlist, WatchLater } from "./Pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,7 +17,15 @@ const App = () => {
         draggable
         autoClose={5000}
       />
-      <div className="bg-stone-700">HelloWorld</div>
+      <div className="bg-stone-700">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/playlists" element={<Playlist />} />
+          <Route path="/watchLater" element={<WatchLater />} />
+          <Route path="" element={<Detail />} />
+        </Routes>
+      </div>
     </>
   );
 };

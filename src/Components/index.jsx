@@ -12,6 +12,7 @@ import {
 import TextInputLabel from "./TextInputLabel";
 import TextInput from "./TextInput";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 export {
   Card,
   ModalProvider,
@@ -25,4 +26,5 @@ export {
   TextInputLabel,
   TextInput,
   Header,
+  Sidebar,
 };
