@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { simpleStr } from "../../Utility/simpleStr";
-import { HorizontalRule } from "@mui/icons-material";
+import { HorizontalRule, WatchLaterOutlined } from "@mui/icons-material";
+import { IconActionBtn } from "../Actions";
 
 const Card = (props) => {
   const {
@@ -28,6 +29,11 @@ const Card = (props) => {
             <span className="absolute bg-stone-50 px-2 py-1 top-[8px] left-[8px] rounded-md">
               {category}
             </span>
+          )}
+          {!isCategory && (
+            <button className="absolute top-[0] right-[0] bg-stone-200 pl-2 pb-2 rounded-es-xl border-none hover:bg-stone-600 hover:text-stone-50">
+              <WatchLaterOutlined />
+            </button>
           )}
         </div>
         {!isCategory && (

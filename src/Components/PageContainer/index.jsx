@@ -13,14 +13,16 @@ const PageContainer = (props) => {
 
   return (
     <div className={classes}>
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen gap-2">
         <div className="basis-2/12 h-full">
           <Sidebar />
         </div>
-        <div className="basis-10/12 h-full py-6 px-4 flex flex-col gap-7">
-          <h2 className="text-3xl capitalize">{label}</h2>
-          {extra && extra}
-          <div className="" style={gridStyle}>
+        <div className="basis-10/12 h-full pt-[2vh] flex flex-col gap-7">
+          <div className="flex flex-col gap-3 h-[16vh]">
+            <h2 className="text-3xl capitalize">{label}</h2>
+            {extra && extra}
+          </div>
+          <div className="overflow-y-scroll h-[78vh]" style={gridStyle}>
             {children}
           </div>
         </div>
