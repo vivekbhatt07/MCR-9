@@ -1,11 +1,19 @@
 import React from "react";
-import { PageContainer } from "../../Components";
+import { Card, PageContainer } from "../../Components";
 import { useData } from "../../Context";
 
 const Landing = () => {
   const { state, dispatch } = useData();
 
-  return <PageContainer>HelloWorld</PageContainer>;
+  return (
+    <PageContainer label="Categories">
+      {state.categoryList.map((currentCategory) => {
+        return (
+          <Card key={currentCategory._id} {...currentCategory} isCategory />
+        );
+      })}
+    </PageContainer>
+  );
 };
 
 export default Landing;

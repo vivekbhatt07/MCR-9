@@ -1,53 +1,56 @@
 import React from "react";
-import moment from "moment";
 import { Link } from "react-router-dom";
+import { simpleStr } from "../../Utility/simpleStr";
+import { HorizontalRule } from "@mui/icons-material";
 
 const Card = (props) => {
-  // const {
-  //   id,
-  //   title,
-  //   eventStartTime,
-  //   eventEndTime,
-  //   location,
-  //   address,
-  //   eventThumbnail,
-  //   eventDescription,
-  //   hostedBy,
-  //   eventType,
-  //   isPaid,
-  //   eventTags,
-  //   speakers,
-  //   price,
-  //   additionalInformation,
-  // } = props;
-
-  const convertStartDate = moment(props.eventStartTime)
-    .utc()
-    .format("YYYY-MM-DD");
-  const convertEndDate = moment(props.eventEndTime).utc().format("YYYY-MM-DD");
-
+  const {
+    _id,
+    thumbnail,
+    src,
+    category,
+    isCategory,
+    title,
+    views,
+    chips,
+    creator,
+  } = props;
   return (
-    <Link to={`/${props?.id}`}>
-      <div className="flex flex-col min-w-[250px] max-w-[250px] border border-stone-400 rounded-sm items-stretch">
+    <Link to={`/category/${simpleStr(category)}`}>
+      <div className="flex flex-col min-w-[300px] max-w-[300px] border border-stone-400 rounded-lg items-stretch overflow-hidden">
         <div className="h-[200px] relative">
           <img
-            src={props?.eventThumbnail}
-            alt={props?.title}
+            src={thumbnail}
+            alt={category}
             className="w-full h-full object-cover"
           />
-          <span className="absolute bg-stone-50 px-2 py-1 top-[8px] left-[8px] rounded-md">
-            {props?.eventType}
-          </span>
-        </div>
-        <div className="flex flex-col p-4 gap-2">
-          <h3 className="text-2xl">{props?.title}</h3>
-          <div className="flex justify-between">
-            <span className="font-normal text-stone-400">
-              {convertStartDate}
+          {isCategory && (
+            <span className="absolute bg-stone-50 px-2 py-1 top-[8px] left-[8px] rounded-md">
+              {category}
             </span>
-            <span className="font-normal text-stone-400">{convertEndDate}</span>
-          </div>
+          )}
         </div>
+        {!isCategory && (
+          <div className="flex gap-2 py-2 px-4">
+            <div className="w-10 h-10 rounded-full overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={
+                  "https://res.cloudinary.com/duqsyuriy/image/upload/v1687449309/Avatar/AvatarThree_mg1cgs.svg"
+                }
+                alt="dummy"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-sm">{title}</h3>
+              <div className="flex gap-2 text-xs items-center text-stone-500">
+                <span>{views} views</span>
+                <span>|</span>
+                <span>{creator}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </Link>
   );

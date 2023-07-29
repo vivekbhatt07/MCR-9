@@ -5,7 +5,11 @@ import { useData } from "../../Context";
 const Explore = () => {
   const { state, dispatch } = useData();
 
-  return <PageContainer>HelloWorld</PageContainer>;
+  return (
+    <PageContainer label="Explore" extra={<input />}>
+      HelloWorld
+    </PageContainer>
+  );
 };
 
 export default Explore;

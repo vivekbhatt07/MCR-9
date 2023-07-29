@@ -5,7 +5,7 @@ import { useData } from "../../Context";
 const Playlist = () => {
   const { state, dispatch } = useData();
 
-  return <PageContainer>HelloWorld</PageContainer>;
+  return <PageContainer label="Playlists">HelloWorld</PageContainer>;
 };
 
 export default Playlist;
