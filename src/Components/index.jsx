@@ -14,6 +14,8 @@ import TextInput from "./TextInput";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import PlaylistCard from "./PlaylistCard";
+import MoreCard from "./MoreCard";
+import NoteForm from "./NoteForm";
 export {
   Card,
   ModalProvider,
@@ -29,4 +31,6 @@ export {
   Header,
   Sidebar,
   PlaylistCard,
+  MoreCard,
+  NoteForm,
 };

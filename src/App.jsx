@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/playlists" element={<Playlist />} />
           <Route path="/watchLater" element={<WatchLater />} />
           <Route path="/category/:categoryType" element={<CategoryList />} />
-          <Route path="" element={<Detail />} />
+          <Route path="/:videoId" element={<Detail />} />
         </Routes>
       </div>
     </>

@@ -11,6 +11,7 @@ const InitialState = {
   categoryList: [...categories],
   videoList: [...videos],
   playList: [],
+  noteList: [],
 };
 
 const DataReducer = (state, action) => {
@@ -36,6 +37,25 @@ const DataReducer = (state, action) => {
         ...state,
         playList: state.playList.filter((currentPlayList) => {
           return currentPlayList._id !== action.payload;
+        }),
+      };
+    }
+
+    case "ADD_NOTE": {
+      return {
+        ...state,
+        noteList: [
+          ...state.noteList,
+          { _id: action.payload._id, text: action.payload.text },
+        ],
+      };
+    }
+
+    case "REMOVE_NOTE": {
+      return {
+        ...state,
+        noteList: state.noteList.filter((currentNote) => {
+          return currentNote._id !== action.payload;
         }),
       };
     }

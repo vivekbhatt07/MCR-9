@@ -17,7 +17,7 @@ const Card = (props) => {
     creator,
   } = props;
   return (
-    <Link to={`/category/${simpleStr(category)}`}>
+    <Link to={isCategory ? `/category/${simpleStr(category)}` : `/${_id}`}>
       <div className="flex flex-col min-w-[300px] max-w-[300px] border border-stone-400 rounded-lg items-stretch overflow-hidden">
         <div className="h-[200px] relative">
           <img
